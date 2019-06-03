@@ -15,5 +15,8 @@ module RailsRepoViewerApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # cf.) https://qiita.com/joooee0000/items/3ab0f3d791e0d0beb639
+    config.paths.add 'lib', eager_load: true
   end
 end
