@@ -2,17 +2,21 @@ require 'octokit'
 
 class Batch::GetIssues < Batch::Base
 
-  def self.exec
+  def self.exec(options = {})
     logger.info 'start.'
 
     logger.debug '----- dryrun mode -----'
-    unless dryrun?
-      puts "Issues"
 
+    repo = options.has_key?(:repo) ? options[:repo] : 'rails/rails'
+    page = options.has_key?(:page) ? options[:page] : 1
+    logger.debug "----- repo: #{repo}, page: #{page} -----"
+
+    unless dryrun?
       client = Octokit::Client.new
-      client.auto_paginate = true
-      issues = client.issues 'rails/rails'
-      puts issues.length
+      issues = client.issues(repo, per_page: 25, page: page)
+
+      generator = CSVGenerator.new
+      puts generator.issues_to_csv_strings issues
     end
 
     logger.info 'finish.'
