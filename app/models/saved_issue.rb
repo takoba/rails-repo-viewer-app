@@ -1,0 +1,2 @@
+class SavedIssue < ApplicationRecord
+end

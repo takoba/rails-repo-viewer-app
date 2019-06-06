@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User name:</strong>
+  <%= @saved_issue.user_name %>
+</p>
+
+<p>
+  <strong>Repo name:</strong>
+  <%= @saved_issue.repo_name %>
+</p>
+
+<%= link_to 'Edit', edit_saved_issue_path(@saved_issue) %> |
+<%= link_to 'Back', saved_issues_path %>
