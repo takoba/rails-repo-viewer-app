@@ -1,5 +1,3 @@
-require 'octokit'
-
 class Batch::GetIssues < Batch::Base
 
   def self.exec(options = {})
@@ -12,11 +10,8 @@ class Batch::GetIssues < Batch::Base
     logger.debug "----- repo: #{repo}, page: #{page} -----"
 
     unless dryrun?
-      client = Octokit::Client.new
-      issues = client.issues(repo, per_page: 25, page: page)
-
-      generator = CSVGenerator.new
-      puts generator.issues_to_csv_strings issues
+      client = IssueRequestClient.new
+      puts client.issues_csv_strings(repo, per_page: 25, page: page)
     end
 
     logger.info 'finish.'
