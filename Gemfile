@@ -38,6 +38,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'webpacker', '~> 4.0'
 
+# cf.) https://qiita.com/naoki85/items/51a8b0f2cbf949d08b11#materialize%E3%81%AE%E5%B0%8E%E5%85%A5
+gem 'jquery-rails'
+gem 'materialize-sass'
+gem 'material_icons'
 
 gem 'octokit', '~> 4.0'
 
