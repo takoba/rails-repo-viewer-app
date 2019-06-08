@@ -1,4 +1,7 @@
 class SavedIssuesController < ApplicationController
+  include ActionController::RequestForgeryProtection
+  protect_from_forgery with: :exception, unless: -> { request.format.json? }
+
   before_action :set_saved_issue, only: [:show, :edit, :update, :destroy]
 
   # GET /saved_issues
